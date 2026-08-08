@@ -1,0 +1,26 @@
+{
+  "model_type": "sst2-distilbert(frozen) + logistic-regression head",
+  "backbone_name": "distilbert-base-uncased-finetuned-sst-2-english",
+  "feature_names": [
+    "mean_p",
+    "max_p",
+    "min_p",
+    "std_p",
+    "frac_pos"
+  ],
+  "best_C": 0.1,
+  "cv_balanced_accuracy": 0.9305555555555557,
+  "public_test_accuracy": 0.9025,
+  "public_test_balanced_accuracy": 0.9025000000000001,
+  "confusion_matrix": [
+    [
+      174,
+      26
+    ],
+    [
+      13,
+      187
+    ]
+  ],
+  "seed": 42
+}
