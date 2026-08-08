@@ -61,3 +61,36 @@ The notebook's **section 6** defines `predict_from_checkpoint(texts)`, which rel
 `model_checkpoint/classifier.joblib` plus the frozen backbone and returns 0/1
 predictions for any list of reviews — the exact inference path (reused unchanged in
 Stage 2).
+
+## Use of AI
+
+Generative AI tools were used while developing this submission. This section
+discloses that use, as required.
+
+- **Tool used:** Claude (Anthropic).
+- **What it was used for:**
+  - Implementing the chunking of long reviews into ~200-word windows and the
+    aggregation of per-chunk `P(positive)` into the five features
+    `[mean, max, min, std, fraction_positive]`.
+  - Debugging the 5-fold stratified cross-validation used to pick the L2 strength
+    `C`, and wiring up the checkpoint save/reload path.
+- **Representative prompts:**
+  - "I have 240 movie reviews (180 positive / 60 negative) and a 400-review
+    balanced test set. Reviews are long. What's a robust approach that won't
+    overfit such a small, imbalanced set?"
+  - "Reviews are longer than the 256-token window. Write code to split each review
+    into ~200-word chunks, score each chunk with a frozen SST-2 DistilBERT, and
+    aggregate the chunk probabilities into features for a Logistic Regression head."
+  - "Set up 5-fold stratified cross-validation to choose the regularization
+    strength C, using class_weight='balanced', and save the trained head plus its
+    metadata to a checkpoint I can reload without retraining."
+- **How the output was verified:** the notebook was run end-to-end and the reported
+  metrics (public-test accuracy 0.9025, confusion matrix `[[174, 26], [13, 187]]`)
+  were reproduced from the saved checkpoint; each AI-suggested step was reviewed
+  against the course material and checked for correctness and reproducibility
+  before being kept.
+
+## Credits
+
+- **Author:** Ahmad Al Damin ([@ahmadaldamin3-tech](https://github.com/ahmadaldamin3-tech))
+- **AI assistance:** Claude (Anthropic), as described in the *Use of AI* section above.
