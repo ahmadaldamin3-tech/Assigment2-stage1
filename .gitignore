@@ -13,3 +13,6 @@ __pycache__/
 
 # Hugging Face cache (backbone is downloaded by name on first run)
 .cache/
+
+# Stage 2 released hidden test (instructor-provided; not part of required deliverables)
+hidden_test.csv
