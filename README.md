@@ -89,8 +89,24 @@ discloses that use, as required.
   were reproduced from the saved checkpoint; each AI-suggested step was reviewed
   against the course material and checked for correctness and reproducibility
   before being kept.
+- **Stage 2:** Claude also helped run the inference-only hidden-test evaluation —
+  loading the Stage 1 checkpoint (no retraining), generating
+  `hidden_test_predictions.csv`, and drafting `stage2_notebook.ipynb` /
+  `hidden_test_evaluation.md`. The hidden-test result (accuracy 0.8833) was
+  reproduced from the same checkpoint and reviewed before submission.
+
+All modeling decisions, the final approach, and every result were chosen, run, and
+verified by the author; AI was used as an assistant, not a replacement.
+
+## References
+
+- **Dataset:** Pang & Lee movie-review polarity corpus, redistributed via NLTK.
+- **Pretrained model:** `distilbert-base-uncased-finetuned-sst-2-english`
+  (Hugging Face), used as a frozen backbone.
+- **Libraries:** PyTorch, Hugging Face Transformers, scikit-learn, pandas, NumPy.
 
 ## Credits
 
 - **Author:** Ahmad Al Damin ([@ahmadaldamin3-tech](https://github.com/ahmadaldamin3-tech))
+  — designed the approach, ran the experiments, and verified all results.
 - **AI assistance:** Claude (Anthropic), as described in the *Use of AI* section above.
